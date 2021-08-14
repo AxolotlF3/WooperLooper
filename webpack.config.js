@@ -27,7 +27,7 @@ module.exports = {
     hot: true,
     publicPath: '/dist/',
     // proxy: {
-    //   // '/': 'http://localhost:3000',
-    // }
+    //   '/': 'http://localhost:3000',
+    // },
   },
 };
