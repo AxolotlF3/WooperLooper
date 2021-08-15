@@ -34,7 +34,7 @@ app.get('/profile/:id', (req, res) => {
     id: id
   })
     .then(user => {
-      if (user.length) res.json(user[0])
+      if (user.length) res.status(200).json(user[0])
       else res.status(400).json('not found')
     })
 })
