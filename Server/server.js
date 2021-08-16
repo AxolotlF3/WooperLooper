@@ -35,20 +35,41 @@ app.get('/', (req, res) => {
 
 // route for login
 app.post('/login', (req, res) => {
+  pgDB.select('email', 'hash').from('login')
+    .where('email', '=', req.body.email)
+    .then(loginEntry => {
+      // console.log(loginEntry)
+      const isValid = bcrypt.compareSync(req.body.password, loginEntry[0].hash);
+      console.log('is valid?', isValid)
+      if (isValid) {
+        return pgDB.select('*').from('users')
+          .where('email', '=', req.body.email)
+          .then(user => {
+            res.json(user[0])
+            console.log('user0: ', user[0])
+            console.log('email: ', req.body.email)
+          })
+          .catch(err => res.status(400).json('could not retrieve user'))
+      } else {
+        res.status(400).json('invalid login info')
+      }
+    })
+    .catch(err => res.status(400).json('invalid login information'))
   // generate hash from user password
-  const saltRounds = 7;
-  const password = req.body.users[0];
+  // const saltRounds = 7;
+  // console.log(req.body.password, 'req body password')
+  // const password = req.body.password;
 
-  bcrypt.hash(plaintextpw, saltRounds, (err, hash) => {
-    // store hash in password DB
+  // bcrypt.hash(password, saltRounds, (err, hash) => {
+  //   // store hash in password DB
 
-    // check if password matches
-    bcrypt.compare(plaintextpw, hash, (err, res) => {
-      // if res = true
-      // authenticate user
-      // else
-    });
-  });
+  //   // check if password matches
+  //   bcrypt.compare(password, hash, (err, res) => {
+  //     // if res = true
+  //     // authenticate user
+  //     // else
+  //   });
+  // });
 });
 
 
@@ -63,19 +84,35 @@ app.post('/login', (req, res) => {
 
 app.post('/signup', (req, res) => {
   const { email, name, password } = req.body;
-  pgDB('users')
-    .returning('*')
-    .insert({
-      email: email,
-      name: name,
-      joined: new Date()
-    })
-    .then(user => {
-      res.json(user[0]);
-    })
+  const hash = bcrypt.hashSync(password);
+    pgDB.transaction(trx => { // create a transaction, use trx obj to perform operations
+      trx.insert({ // insert hash and email into login
+        hash: hash,
+        email: email
+      })
+      .into('login')
+      .returning('email') // return promise to return the email
+      .then(loginEmail => { // upon resolving email promise
+        console.log('login email:', loginEmail)
+        return trx('users') // return another transaction
+          .returning('*')
+          .insert({ // insert email, name, and joined date into users
+            email: loginEmail[0],
+            name: name,
+            foodstyle: '',
+            joined: new Date()
+          })
+          .then(user => {
+            console.log('user', user)
+            console.log('user at 0', user[0])
+            res.json(user[0]);
+          })
+      })
+      .then(trx.commit) // commit the changes to the db
+      .catch(trx.rollback) // if failure, rollback the changes
+  })
     .catch(err => res.status(400).json('invalid registration'))
 })
-
 
 app.get('/profile/:id', (req, res) => {
   const { id } = req.params;
