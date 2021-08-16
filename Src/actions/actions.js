@@ -15,3 +15,12 @@ export const updateSelectedRecipe = data => ({
   type: types.ADD_SELECTED_RECIPE,
   payload: data,
 });
+export const updateAccountStatus = (accountStatus) => ({
+  type: types.UPDATE_ACCOUNT_STATUS,
+  payload: accountStatus,
+})
+
+export const updateLoginStatus = (value) => ({
+  type: types.UPDATE_LOGIN_STATUS,
+  payload:value,
+})

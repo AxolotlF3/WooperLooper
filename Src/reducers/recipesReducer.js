@@ -4,6 +4,8 @@ const initialState = {
   ingredient: '',
   recipes: [],
   selectedRecipe: '',
+  userSignedIn: false,
+  userHasAccount: true,
 };
 
 const recipesReducer = (state = initialState, action) => {
@@ -21,7 +23,18 @@ const recipesReducer = (state = initialState, action) => {
         ...state,
         recipes: action.payload
       }
-
+    }
+    case types.UPDATE_ACCOUNT_STATUS: {
+      return {
+        ...state,
+        userHasAccount: action.payload,
+      }
+    }
+    case types.UPDATE_ACCOUNT_STATUS: {
+      return {
+        ...state,
+        userSignedIn: action.payload,
+      }
     }
     case types.ADD_SELECTED_RECIPE: {
       return {

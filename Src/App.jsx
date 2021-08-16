@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import HomepageContainer from './components/HomepageContainer.jsx';
 import Search from './components/Search.jsx';
 import Recipes from './components/Recipes.jsx';
 import RecipeDetails from './components/RecipeDetails.jsx';
 
 const mapStateToProps = state => ({
+  userSignedIn: state.recipes.userSignedIn,
   ingredient: state.recipes.ingredient,
   recipes: state.recipes.recipes,
   selectedRecipe: state.recipes.selectedRecipe,
 });
+
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +22,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <Search />
+        {/* <Search /> */}
         {
           this.props.selectedRecipe.idMeal ? 
           <RecipeDetails /> :
@@ -33,6 +36,7 @@ class App extends Component {
           this.props.selectedRecipe.idMeal &&
           <RecipeDetails />
         } */}
+        {/* {this.props.userSignedIn ? <Search /> : <HomepageContainer />}         */}
       </div>
     );
   }
