@@ -6,11 +6,12 @@ export const updateIngredient = input => ({
   payload: input,
 })
 
-// export const updateRecipes = () => ({
-//   type: types.ADD_RECIPES,
-// });
-
 export const updateRecipes = data => ({
   type: types.ADD_RECIPES,
+  payload: data,
+});
+
+export const updateSelectedRecipe = data => ({
+  type: types.ADD_SELECTED_RECIPE,
   payload: data,
 });
