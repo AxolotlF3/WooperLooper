@@ -29,7 +29,7 @@ const recipesReducer = (state = initialState, action) => {
         userHasAccount: action.payload,
       }
     }
-    case types.UPDATE_ACCOUNT_STATUS: {
+    case types.UPDATE_LOGIN_STATUS: {
       return {
         ...state,
         userSignedIn: action.payload,

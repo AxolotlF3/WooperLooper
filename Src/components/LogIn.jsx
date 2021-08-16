@@ -28,13 +28,13 @@ const Login = props => {
     })
       .then(res => res.json())
       .then(user => {
-        // console.log('this is the USER! ', user)
+        console.log('this is the USER! ', user)
         if(user.id){
           props.loginHandler(true);
         }
       })
 };
- 
+
   return (
     <div className="login">
       {/* have the action in the form take you to the Search page */}
