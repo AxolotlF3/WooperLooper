@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import Search from './components/Search.jsx';
-// import Recipes from './Recipes.jsx';
+import HomepageContainer from './components/HomepageContainer.jsx';
+import Search from './components/Search.jsx'
+import { connect } from 'react-redux'
+
+const mapStateToProps = state => ({
+  userSignedIn: state.recipes.userSignedIn,
+})
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +15,10 @@ class App extends Component {
   render() {
     return(
       <div>
-        <Search />
+        {this.props.userSignedIn ? <Search /> : <HomepageContainer />}        
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps, null)(App);
