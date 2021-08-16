@@ -6,7 +6,6 @@ import store from './store';
 
 render(
   <Provider store={store}>
-  {/* <Provider> */}
     <App />
   </Provider>,
 

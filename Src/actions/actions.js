@@ -6,23 +6,11 @@ export const updateIngredient = input => ({
   payload: input,
 })
 
-export const updateRecipes = () => ({
+// export const updateRecipes = () => ({
+//   type: types.ADD_RECIPES,
+// });
+
+export const updateRecipes = data => ({
   type: types.ADD_RECIPES,
+  payload: data,
 });
-
-// export const addCardActionCreator = marketId => ({
-//   type: types.ADD_CARD,
-//   payload: marketId,
-// });
-// export const addMarketActionCreator = () => ({
-//   type: types.ADD_MARKET,
-// });
-
-// export const setNewLocationActionCreator = userInput => ({
-//   type: types.SET_NEW_LOCATION,
-//   payload: userInput,
-// });
-// export const deleteCardActionCreator = marketId => ({
-//   type: types.DELETE_CARD,
-//   payload: marketId,
-// });
