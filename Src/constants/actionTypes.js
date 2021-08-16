@@ -5,5 +5,6 @@
 
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 export const ADD_RECIPES = 'ADD_RECIPES';
+export const UPDATE_ACCOUNT_STATUS = 'UPDATE_ACCOUNT_STATUS';
 
 // this file is for preventing from typo.

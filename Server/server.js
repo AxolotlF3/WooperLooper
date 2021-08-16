@@ -32,7 +32,6 @@ app.get('/', (req, res) => {
 })
 
 
-
 // route for login
 app.post('/login', (req, res) => {
   // generate hash from user password

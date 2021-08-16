@@ -14,3 +14,8 @@ export const updateRecipes = data => ({
   type: types.ADD_RECIPES,
   payload: data,
 });
+
+export const updateAccountStatus = (accountStatus) => ({
+  type: types.UPDATE_ACCOUNT_STATUS,
+  payload: accountStatus,
+})
