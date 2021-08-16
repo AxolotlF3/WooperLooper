@@ -22,10 +22,5 @@ export const updateAccountStatus = (accountStatus) => ({
 
 export const updateLoginStatus = (value) => ({
   type: types.UPDATE_LOGIN_STATUS,
-<<<<<<< HEAD
-  payload: value,
-})
-=======
   payload:value,
 })
->>>>>>> 9c84c48316c1310092b36e53dfa514cabe8caab0

@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 const RecipeDetails = props => {
   const { strMeal, strInstructions, strMealThumb, strYoutube, strSource } = props.selectedRecipe;
   return(
-    <div>
+    <div className="recipedetails-wrapper">
       <img src={strMealThumb} alt={`${strMeal} image`}/>
       <h1>{strMeal}</h1>
       <p>{strInstructions}</p>

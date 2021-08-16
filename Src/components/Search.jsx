@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateIngredient } from '../actions/actions';
 import { updateRecipes } from '../actions/actions';
+import Recipes from './Recipes.jsx';
+import RecipeDetails from './RecipeDetails.jsx';
 
 const mapStateToProps = state => ({
   // add pertinent state here
   ingredient: state.recipes.ingredient,
   recipes: state.recipes.recipes,
+  selectedRecipe: state.recipes.selectedRecipe,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,9 +28,14 @@ const Search = props => {
     };
 
     return(
-      <div>
+      <div className="search-wrapper">
         <input type="text" onChange={e => props.searchBarHandler(e.target.value)}/>
         <button type="button" onClick={() => fetchRecipes()}>Search Recipe!</button>
+        {
+          props.selectedRecipe.idMeal ? 
+          <RecipeDetails/> :
+          <Recipes />
+        }
       </div>
     );
 }

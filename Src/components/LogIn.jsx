@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => ({
 const Login = props => {
  // make a fetch request to /login
  const fetchLogin = () => {
+<<<<<<< HEAD
     const email = document.getElementById('email')
     const password = document.getElementById('password')
     // console.log('this is the FIRST button works message!')
@@ -33,6 +34,25 @@ const Login = props => {
           props.loginHandler(true);
         }
       })
+=======
+    // const email = document.getElementById('email')
+    // const password = document.getElementById('password')
+    // // console.log('this is the FIRST button works message!')
+    // // console.log('This is password: ', password.value)
+    // fetch('/login', {
+    //   method: 'POST',
+    //   body: JSON.stringify({email: email.value, password: password.value}),
+    //   headers: { 'Content-Type': 'application/json'}
+    // })
+    //   .then(res => res.json())
+    //   .then(user => {
+    //     // console.log('this is the USER! ', user)
+    //     if(user.id){
+    //       props.loginHandler(true);
+    //     }
+    //   })
+    return props.loginHandler(true);
+>>>>>>> 4f1dba7110a2e5f29adf305e43954306469eebb0
 };
 
   return (

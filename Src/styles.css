@@ -11,6 +11,21 @@ body {
   padding-top:10px;
 } */
 
+body {
+  /* padding-top: 10px; */
+  display: flex;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.search-wrapper {
+  margin-bottom: 40px;
+}
+
 .recipes-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -18,12 +33,19 @@ body {
 }
 
 .recipecard-wrapper {
-  background: yellowgreen;
-  margin: 0;
+  margin: 20px;
   width: 300px;
 }
 
 .recipecard-wrapper > img {
   object-fit: contain;
   width: 100%;
+}
+
+.recipedetails-wrapper {
+
+}
+
+.recipedetails-wrapper > img {
+  width: 300px;
 }
