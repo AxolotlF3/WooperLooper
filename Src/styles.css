@@ -10,3 +10,20 @@
 body {
   padding-top:10px;
 } */
+
+.recipes-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.recipecard-wrapper {
+  background: yellowgreen;
+  margin: 0;
+  width: 300px;
+}
+
+.recipecard-wrapper > img {
+  object-fit: contain;
+  width: 100%;
+}
