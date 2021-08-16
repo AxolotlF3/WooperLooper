@@ -22,12 +22,14 @@ class App extends Component {
   render() {
     return(
       <div>
+        <h1> Wooper Looper</h1>
         {/* <Search /> */}
-        {
-          this.props.selectedRecipe.idMeal ? 
+        {/* {
+          (this.props.userSignedIn && this.props.selectedRecipe.idMeal) ? 
           <RecipeDetails /> :
           <Recipes recipes={this.props.recipes}/>
-        }
+        } */}
+      
         {/* {
           this.props.recipes.length ? 
           <Recipes recipes={this.props.recipes}/> : null
@@ -36,7 +38,7 @@ class App extends Component {
           this.props.selectedRecipe.idMeal &&
           <RecipeDetails />
         } */}
-        {/* {this.props.userSignedIn ? <Search /> : <HomepageContainer />}         */}
+        {this.props.userSignedIn ? <Search /> : <HomepageContainer />}        
       </div>
     );
   }
