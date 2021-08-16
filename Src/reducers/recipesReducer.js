@@ -3,6 +3,8 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   ingredient: '',
   recipes: [],
+  userSignedIn: false,
+  userHasAccount: true,
 };
 
 const recipesReducer = (state = initialState, action) => {
@@ -20,7 +22,18 @@ const recipesReducer = (state = initialState, action) => {
         ...state,
         recipes: action.payload
       }
-
+    }
+    case types.UPDATE_ACCOUNT_STATUS: {
+      return {
+        ...state,
+        userHasAccount: action.payload,
+      }
+    }
+    case types.UPDATE_ACCOUNT_STATUS: {
+      return {
+        ...state,
+        userSignedIn: action.payload,
+      }
     }
     default: {
       return state;
