@@ -3,6 +3,7 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   ingredient: '',
   recipes: [],
+  selectedRecipe: '',
   userSignedIn: false,
   userHasAccount: true,
 };
@@ -34,6 +35,13 @@ const recipesReducer = (state = initialState, action) => {
         ...state,
         userSignedIn: action.payload,
       }
+    }
+    case types.ADD_SELECTED_RECIPE: {
+      return {
+        ...state,
+        selectedRecipe: action.payload
+      }
+
     }
     default: {
       return state;
