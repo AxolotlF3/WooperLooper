@@ -18,8 +18,27 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.app-wrapper > p {
+  text-align: center;
+}
+
 h1 {
   font-weight: 700;
+  text-align: center;
+  font-family: 'Recursive', sans-serif;
+}
+
+
+
+.login > span {
+  display: block;
+  margin-top: 10px;
+}
+
+.login > span > p {
+  display: inline;
+  color: blue;
+  text-decoration: underline;
 }
 
 .search-wrapper {

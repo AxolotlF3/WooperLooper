@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
 })
 
 
+
 // route for login
 app.post('/login', (req, res) => {
   pgDB.select('email', 'hash').from('login')
@@ -83,15 +84,13 @@ app.post('/login', (req, res) => {
 
 app.post('/signup', (req, res) => {
   const { email, name, password } = req.body;
-  console.log('this is the email: ', email)
-  // const newEmail = JSON.stringify(email)
-  // console.log('newEmail: ', newEmail)
+  // console.log(req.body, 'r')
   const hash = bcrypt.hashSync(password);
-  pgDB.transaction(trx => { // create a transaction, use trx obj to perform operations
-    trx.insert({ // insert hash and email into login
-      hash: hash,
-      email: email
-    })
+    pgDB.transaction(trx => { // create a transaction, use trx obj to perform operations
+      trx.insert({ // insert hash and email into login
+        hash: hash,
+        email: email
+      })
       .into('login')
       .returning('email') // return promise to return the email
       .then(loginEmail => { // upon resolving email promise
